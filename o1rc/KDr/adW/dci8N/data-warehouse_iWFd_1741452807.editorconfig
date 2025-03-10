@@ -11,5 +11,4 @@ indent_style = space
 indent_size = 4
 
 [{package.json,*.yml,*.yaml,*.proto}]
-indent_style = space
 indent_size = 2
