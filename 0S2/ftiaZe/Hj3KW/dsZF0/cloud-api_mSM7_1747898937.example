@@ -39,7 +39,6 @@ PGRST_DB_PRE_CONFIG=postgrest.pre_config
 # Checks every 24 hours to see if a new version of ToolJet is available
 # (Enabled by default. Set false to disable)
 CHECK_FOR_UPDATES=true
-
 # Checks every 24 hours to update app telemetry data to ToolJet hub.
 # (Telemetry is enabled by default. Set value to true to disable.)
 # DISABLE_TOOLJET_TELEMETRY=false
