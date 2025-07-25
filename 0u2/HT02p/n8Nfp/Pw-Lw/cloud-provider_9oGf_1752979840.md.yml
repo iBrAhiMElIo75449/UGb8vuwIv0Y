@@ -1,3 +1,6 @@
+以下是优化后的代码片段：
+
+```yaml
 engines:
   govet:
     enabled: true
@@ -8,8 +11,79 @@ engines:
 
 ratings:
   paths:
-    - "**.go"
+    - "**/*.go"
 
 exclude_paths:
-  - vendor/
-  - sdk/
+  - "vendor/**"
+  - "sdk/**"
+```
+
+解释：
+1. 将 `"**.go"` 改为 `"**/*.go"`，这样可以匹配所有以 `.go` 结尾的文件，包括子目录中的文件。
+2. 将 `"vendor/"` 和 `"sdk/"` 改为 `"vendor/**"` 和 `"sdk/**"`，这样可以排除这两个目录及其子目录中的所有文件。
+
+以下是实现登录流程的伪代码：
+
+```javascript
+// 登录流程
+function login(username, password) {
+  // 1. 验证用户名和密码是否为空
+  if (!username || !password) {
+    return { success: false, message: "用户名和密码不能为空" };
+  }
+
+  // 2. 查询数据库，校验用户名和密码是否正确
+  const user = database.getUserByUsername(username);
+  if (!user || user.password !== password) {
+    return { success: false, message: "用户名或密码错误" };
+  }
+
+  // 3. 生成token，并存储到数据库
+  const token = generateToken(user.id);
+  database.saveToken(user.id, token);
+
+  // 4. 返回成功结果和token
+  return { success: true, message: "登录成功", token: token };
+}
+
+// 校验是否为管理员
+function isAdmin(token) {
+  // 1. 从数据库中获取用户信息
+  const user = database.getUserByToken(token);
+
+  // 2. 校验用户是否存在
+  if (!user) {
+    return false;
+  }
+
+  // 3. 校验用户是否为管理员
+  return user.isAdmin;
+}
+
+// JavaScript实现冒泡排序算法
+function bubbleSort(arr) {
+  let len = arr.length;
+  for (let i = 0; i < len; i++) {
+    for (let j = 0; j < len - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        let temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+      }
+    }
+  }
+  return arr;
+}
+
+// Python实现快速排序算法
+def quick_sort(arr):
+  if len(arr) <= 1:
+    return arr
+
+  pivot = arr[len(arr) // 2]
+  left = [x for x in arr if x < pivot]
+  middle = [x for x in arr if x == pivot]
+  right = [x for x in arr if x > pivot]
+
+  return quick_sort(left) + middle + quick_sort(right)
+```
